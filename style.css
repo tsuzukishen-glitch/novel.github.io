@@ -1,0 +1,131 @@
+/* ========================================================================
+   夜讀書閣 · Night Read
+   這份檔案只保留 Tailwind CSS 工具類別做不到(或不適合做)的部分:
+   - 配色系統用的 CSS 變數(供「調整配色」功能讀寫)
+   - 背景光暈效果
+   - 側欄卷軸樣式與手機版側欄滑出效果
+   - 小說內文(章節 html)的排版樣式
+   其餘版面/間距/顏色等一律直接在 HTML 上用 Tailwind 工具類別處理。
+   ======================================================================== */
+
+:root {
+    --bg-void: #0e0c15;
+    --bg-panel: #161320;
+    --bg-panel-hover: #1e1a2c;
+    --bg-card: #191625;
+    --line: #2c2740;
+    --line-soft: #221e33;
+    --ink: #e9e3d8;
+    --ink-dim: #a89fc4;
+    --ink-faint: #6f6789;
+    --gold: #dfb35c;
+    --gold-soft: #a8894a;
+    --violet: #8770c9;
+    --violet-soft: #5c4f8a;
+    --danger: #c96a5b;
+}
+
+/* ---------- 背景光暈 ---------- */
+.bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 900px 500px at 15% -10%, rgba(135, 112, 201, .16), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 110% 10%, rgba(223, 179, 92, .09), transparent 60%);
+}
+
+/* ---------- 卷軸樣式 ---------- */
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 3px;
+}
+
+/* ---------- 手機版側欄滑出 ---------- */
+.menu-btn {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        transform: translateX(-100%);
+        box-shadow: 0 0 40px rgba(0, 0, 0, .4);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .menu-btn {
+        display: block;
+    }
+}
+
+/* ---------- 小說內文排版(章節 html 內容,無法套用 Tailwind 類別) ---------- */
+.chapter-prose {
+    font-family: 'Noto Serif TC', serif;
+    line-height: 2;
+    color: var(--ink);
+}
+
+.chapter-prose p {
+    margin: 0 0 1.5em;
+    text-indent: 2em;
+}
+
+.chapter-prose p.letter {
+    font-style: italic;
+    color: var(--ink-dim);
+    border-left: 2px solid var(--violet-soft);
+    padding: 2px 0 2px 20px;
+    margin: 1.8em 0;
+    text-indent: 0;
+}
+
+.chapter-prose strong {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.chapter-prose em {
+    color: var(--ink-dim);
+    font-style: italic;
+}
+
+.chapter-prose .scene-break {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 2.6em 0;
+}
+
+.chapter-prose .scene-break span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    opacity: .7;
+}
+
+/* ---------- 其他細節 ---------- */
+button:focus-visible,
+.chap-item:focus-visible,
+.nav-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
