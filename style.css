@@ -17,7 +17,7 @@
     --line-soft: #221e33;
     --ink: #e9e3d8;
     --ink-dim: #a89fc4;
-    --ink-faint: #6f6789;
+    --ink-faint: #afa7c9;
     --gold: #dfb35c;
     --gold-soft: #a8894a;
     --violet: #8770c9;
@@ -35,6 +35,39 @@
         radial-gradient(ellipse 900px 500px at 15% -10%, rgba(135, 112, 201, .16), transparent 60%),
         radial-gradient(ellipse 700px 500px at 110% 10%, rgba(223, 179, 92, .09), transparent 60%);
 }
+
+/* ---------- 配色系統的工具 class ----------
+   這些 class 名稱刻意跟 Tailwind 的顏色工具類別同名(bg-panel、text-gold...),
+   但改成直接手寫在這裡、對應 :root 的 CSS 變數,不透過 Tailwind 的
+   theme.extend.colors 動態產生。這樣「調整配色」改變 CSS 變數時保證會生效,
+   不會受 Tailwind CDN 生成樣式表的時機/順序影響。 */
+.bg-void { background-color: var(--bg-void); }
+.bg-panel { background-color: var(--bg-panel); }
+.bg-panelHover { background-color: var(--bg-panel-hover); }
+.bg-card { background-color: var(--bg-card); }
+.bg-gold { background-color: var(--gold); }
+.bg-violetSoft { background-color: var(--violet-soft); }
+
+.border-line { border-color: var(--line); }
+.border-lineSoft { border-color: var(--line-soft); }
+.border-gold { border-color: var(--gold); }
+.border-goldSoft { border-color: var(--gold-soft); }
+.border-violetSoft { border-color: var(--violet-soft); }
+
+.text-ink { color: var(--ink); }
+.text-inkDim { color: var(--ink-dim); }
+.text-inkFaint { color: var(--ink-faint); }
+.text-gold { color: var(--gold); }
+.text-violet { color: var(--violet); }
+
+.hover\:bg-panelHover:hover { background-color: var(--bg-panel-hover); }
+.hover\:border-danger:hover { border-color: var(--danger); }
+.hover\:border-goldSoft:hover { border-color: var(--gold-soft); }
+.hover\:border-violetSoft:hover { border-color: var(--violet-soft); }
+.hover\:text-danger:hover { color: var(--danger); }
+.hover\:text-gold:hover { color: var(--gold); }
+.hover\:text-ink:hover { color: var(--ink); }
+.hover\:text-inkDim:hover { color: var(--ink-dim); }
 
 /* ---------- 卷軸樣式 ---------- */
 .custom-scroll::-webkit-scrollbar {

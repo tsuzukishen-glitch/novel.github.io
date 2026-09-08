@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>夜讀書閣</title>
+    <link rel="shortcut icon" href="images/favicons/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,25 +15,12 @@
     <!-- Tailwind CSS (Play CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // 注意:配色(void/panel/ink/gold/violet...等)刻意「不」放在這裡的 theme.extend.colors,
+        // 而是直接寫成 style.css 裡的一般 CSS class(對應 :root 的 CSS 變數)。
+        // 這樣「調整配色」功能修改 CSS 變數時一定會生效,不會受 Tailwind CDN 動態產生樣式表的時機影響。
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        void: 'var(--bg-void)',
-                        panel: 'var(--bg-panel)',
-                        panelHover: 'var(--bg-panel-hover)',
-                        card: 'var(--bg-card)',
-                        line: 'var(--line)',
-                        lineSoft: 'var(--line-soft)',
-                        ink: 'var(--ink)',
-                        inkDim: 'var(--ink-dim)',
-                        inkFaint: 'var(--ink-faint)',
-                        gold: 'var(--gold)',
-                        goldSoft: 'var(--gold-soft)',
-                        violet: 'var(--violet)',
-                        violetSoft: 'var(--violet-soft)',
-                        danger: 'var(--danger)'
-                    },
                     fontFamily: {
                         serif: ['"Noto Serif TC"', 'serif'],
                         sans: ['"Noto Sans TC"', 'sans-serif']
@@ -45,7 +33,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body class="bg-void text-ink font-sans min-h-screen overflow-x-hidden">
@@ -123,7 +111,7 @@
     </div>
 
     <!-- 主程式邏輯（會自動讀取 books/manifest.js 及其中列出的小說檔） -->
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=7"></script>
 
 </body>
 

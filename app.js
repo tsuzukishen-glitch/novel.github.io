@@ -286,35 +286,35 @@ const THEME_PRESETS = [
     {
         id: 'vesper', name: '夜幕紫金', vars: {
             '--bg-void': '#0e0c15', '--bg-panel': '#161320', '--bg-panel-hover': '#1e1a2c', '--bg-card': '#191625',
-            '--line': '#2c2740', '--line-soft': '#221e33', '--ink': '#e9e3d8', '--ink-dim': '#a89fc4', '--ink-faint': '#6f6789',
+            '--line': '#2c2740', '--line-soft': '#221e33', '--ink': '#e9e3d8', '--ink-dim': '#a89fc4', '--ink-faint': '#afa7c9',
             '--gold': '#dfb35c', '--gold-soft': '#a8894a', '--violet': '#8770c9', '--violet-soft': '#5c4f8a', '--danger': '#c96a5b'
         }
     },
     {
         id: 'ink', name: '墨黑赤金', vars: {
             '--bg-void': '#0a0a0a', '--bg-panel': '#141414', '--bg-panel-hover': '#1c1c1c', '--bg-card': '#161616',
-            '--line': '#2e2a2a', '--line-soft': '#221f1f', '--ink': '#ece6df', '--ink-dim': '#b8a89a', '--ink-faint': '#786a5f',
+            '--line': '#2e2a2a', '--line-soft': '#221f1f', '--ink': '#ece6df', '--ink-dim': '#b8a89a', '--ink-faint': '#b8aa9f',
             '--gold': '#d98c4a', '--gold-soft': '#a8663a', '--violet': '#c9605c', '--violet-soft': '#8a4643', '--danger': '#d9534f'
         }
     },
     {
         id: 'abyss', name: '深海靛藍', vars: {
             '--bg-void': '#0a0f1a', '--bg-panel': '#111a2b', '--bg-panel-hover': '#182437', '--bg-card': '#131e30',
-            '--line': '#233047', '--line-soft': '#1a2437', '--ink': '#dfe6ef', '--ink-dim': '#94a8c4', '--ink-faint': '#5f7089',
+            '--line': '#233047', '--line-soft': '#1a2437', '--ink': '#dfe6ef', '--ink-dim': '#94a8c4', '--ink-faint': '#9fb0c9',
             '--gold': '#5cc2df', '--gold-soft': '#4a95a8', '--violet': '#7089d6', '--violet-soft': '#4f5c8a', '--danger': '#c9705b'
         }
     },
     {
         id: 'forest', name: '森林墨綠', vars: {
             '--bg-void': '#0b1210', '--bg-panel': '#121c19', '--bg-panel-hover': '#1a2723', '--bg-card': '#14201c',
-            '--line': '#28382f', '--line-soft': '#1d2b24', '--ink': '#e2e9de', '--ink-dim': '#a3bfa0', '--ink-faint': '#69826a',
+            '--line': '#28382f', '--line-soft': '#1d2b24', '--ink': '#e2e9de', '--ink-dim': '#a3bfa0', '--ink-faint': '#a9c2aa',
             '--gold': '#c9b25c', '--gold-soft': '#a8934a', '--violet': '#5ca887', '--violet-soft': '#4a7a5c', '--danger': '#c9705b'
         }
     },
     {
         id: 'rouge', name: '胭脂酒紅', vars: {
             '--bg-void': '#130b0e', '--bg-panel': '#1e1216', '--bg-panel-hover': '#291a1f', '--bg-card': '#20141a',
-            '--line': '#3a2530', '--line-soft': '#2b1c24', '--ink': '#f0e3e2', '--ink-dim': '#c69fa8', '--ink-faint': '#89676f',
+            '--line': '#3a2530', '--line-soft': '#2b1c24', '--ink': '#f0e3e2', '--ink-dim': '#c69fa8', '--ink-faint': '#c9a7af',
             '--gold': '#dfa85c', '--gold-soft': '#a87c4a', '--violet': '#c96a8a', '--violet-soft': '#8a4f63', '--danger': '#d9534f'
         }
     }
@@ -616,7 +616,7 @@ function renderChapter(book, chapterId) {
     renderBookSidebar(book, ch.id);
     renderTopbarRight({ showBookmarkStar: true, bookId: book.id, chapterId: ch.id, bookTitle: book.title, chapterTitle: ch.title });
 
-    const navBtnBase = 'flex-1 flex flex-col gap-1.5 px-4.5 py-4 bg-panel border border-line rounded-[10px] cursor-pointer text-inkDim min-w-0 hover:border-violetSoft hover:bg-panelHover';
+    const navBtnBase = 'flex-1 flex flex-col gap-1.5 px-[18px] py-4 bg-panel border border-line rounded-[10px] cursor-pointer text-inkDim min-w-0 hover:border-violetSoft hover:bg-panelHover';
 
     viewport.innerHTML = `
     <div class="flex-1 flex justify-center px-6 pb-[100px]">
