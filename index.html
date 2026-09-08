@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>夜讀書閣</title>
-    <link rel="shortcut icon" href="images/favicons/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +45,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body class="bg-void text-ink font-sans min-h-screen overflow-x-hidden">
@@ -56,7 +55,7 @@
     <div class="shell relative z-[1] flex min-h-screen">
         <div class="overlay fixed inset-0 bg-black/50 z-[8] hidden" id="overlay"></div>
 
-        <aside class="sidebar custom-scroll w-[300px] shrink-0 bg-panel border-r border-line h-screen sticky top-0 overflow-y-auto flex flex-col transition-transform duration-300" id="sidebar">
+        <aside class="sidebar custom-scroll w-[300px] shrink-0 bg-panel border-r border-line overflow-y-auto flex flex-col transition-transform duration-300" id="sidebar">
             <div class="flex items-center gap-3 px-6 py-5 border-b border-lineSoft cursor-pointer" id="brandHome">
                 <div class="relative w-9 h-9 shrink-0 border border-goldSoft rounded-full flex items-center justify-center text-gold font-serif text-base">
                     <span class="absolute -inset-1.5 rounded-full border border-violetSoft opacity-50"></span>
@@ -124,7 +123,7 @@
     </div>
 
     <!-- 主程式邏輯（會自動讀取 books/manifest.js 及其中列出的小說檔） -->
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 
 </body>
 

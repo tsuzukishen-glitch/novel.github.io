@@ -46,27 +46,35 @@
     border-radius: 3px;
 }
 
-/* ---------- 手機版側欄滑出 ---------- */
+/* ---------- 側欄定位(桌機 sticky / 手機滑出) ----------
+   這段刻意獨立寫成一般 CSS,不跟 Tailwind 的定位工具類別混用,
+   避免 Tailwind CDN 動態注入的樣式表跟這裡的媒體查詢互相搶優先權。 */
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
 .menu-btn {
     display: none;
 }
 
 @media (max-width: 860px) {
     .sidebar {
-        position: fixed;
+        position: fixed !important;
         left: 0;
         top: 0;
         z-index: 10;
-        transform: translateX(-100%);
+        transform: translateX(-100%) !important;
         box-shadow: 0 0 40px rgba(0, 0, 0, .4);
     }
 
     .sidebar.show {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
 
     .menu-btn {
-        display: block;
+        display: block !important;
     }
 }
 
