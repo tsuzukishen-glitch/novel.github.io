@@ -9,6 +9,7 @@
  * ------------------------------------------------------------------ */
 window.NightReadBooks = [];
 window.registerBook = function (book) {
+  // 各本小說檔案載入後會透過這個入口加入書架。
     if (!book || !book.id) {
         console.warn('registerBook: 缺少 id,已略過', book);
         return;
@@ -17,6 +18,7 @@ window.registerBook = function (book) {
 };
 
 function loadScript(src) {
+  // 以 script 載入資料檔，讓書籍檔案可以直接呼叫 registerBook。
     return new Promise((resolve, reject) => {
         const s = document.createElement('script');
         s.src = src;
@@ -27,6 +29,7 @@ function loadScript(src) {
 }
 
 async function loadFolderBooks() {
+  // 先讀取清單，再依序載入小說，確保書籍順序與 manifest 一致。
     window.NIGHTREAD_BOOK_FILES = null;
     try {
         await loadScript('books/manifest.js');
@@ -61,6 +64,7 @@ function getBook(id) {
     return allBooks().find(b => b.id === id);
 }
 function flatChaptersOf(book) {
+  // 側邊欄以卷分組，閱讀頁則需要一份可直接前後導航的章節清單。
     const out = [];
     book.volumes.forEach(v => v.chapters.forEach(c => out.push({ ...c, volName: v.name })));
     return out;
@@ -71,6 +75,7 @@ function flatChaptersOf(book) {
  * ------------------------------------------------------------------ */
 function getProgress() { try { return JSON.parse(localStorage.getItem('nr_progress') || '{}'); } catch (e) { return {}; } }
 function setProgress(bookId, chapterId) {
+  // 每本書只保留最後閱讀章節，下一次進入書籍時可直接繼續。
     const p = getProgress();
     p[bookId] = { chapterId, updatedAt: Date.now() };
     localStorage.setItem('nr_progress', JSON.stringify(p));
@@ -81,6 +86,7 @@ function isBookmarked(bookId, chapterId) {
     return getBookmarks().some(b => b.bookId === bookId && b.chapterId === chapterId);
 }
 function toggleBookmark(bookId, chapterId, bookTitle, chapterTitle) {
+  // 書籤以書籍與章節 ID 判斷唯一性，新增時放到清單最前方。
     let bms = getBookmarks();
     const idx = bms.findIndex(b => b.bookId === bookId && b.chapterId === chapterId);
     if (idx >= 0) { bms.splice(idx, 1); }
@@ -117,6 +123,7 @@ function escapeHtml(str) {
  * Router
  * ------------------------------------------------------------------ */
 function parseHash() {
+  // URL hash 是唯一的路由來源，方便重新整理或分享目前閱讀位置。
     const h = location.hash.replace(/^#\/?/, '');
     if (!h) return { view: 'library' };
     if (h === 'bookmarks') return { view: 'bookmarks' };
@@ -605,6 +612,7 @@ function renderBookHome(book) {
 }
 
 function renderChapter(book, chapterId) {
+  // 章節頁同時更新內容、側邊欄、工具列與閱讀進度。
     const chapters = flatChaptersOf(book);
     const idx = chapters.findIndex(c => c.id === chapterId);
     if (idx === -1) { navTo('book/' + encodeURIComponent(book.id)); return; }
@@ -647,6 +655,7 @@ function renderChapter(book, chapterId) {
  * Route dispatch
  * ------------------------------------------------------------------ */
 function route() {
+  // 所有 hash 變化最後都集中在這裡分派到對應畫面。
     const r = parseHash();
     if (r.view === 'library') { renderLibrary(); return; }
     if (r.view === 'bookmarks') { renderBookmarksPage(); return; }
@@ -675,6 +684,7 @@ document.getElementById('brandHome').addEventListener('click', () => { navTo('')
  * Boot
  * ------------------------------------------------------------------ */
 (async function boot() {
+  // 先套用使用者設定，再載入外部書籍，最後才執行初始路由。
     loadTheme();
     initThemePanel();
     loadFontScale();
