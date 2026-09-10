@@ -4,7 +4,7 @@
  * 檔案會依照陣列的順序載入。
  */
 window.NIGHTREAD_BOOK_FILES = [
-  "darkness.js",
-  "light.js",
-  "therules.js"
+  "vesperale.js",
+  "chenhun.js",
+  "guizezhiwai.js"
 ];
