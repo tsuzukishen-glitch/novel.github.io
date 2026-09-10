@@ -5,6 +5,6 @@
  */
 window.NIGHTREAD_BOOK_FILES = [
   "vesperale.js",
-  "chenhun.js",
-  "guizezhiwai.js"
+  "guizezhiwai.js",
+  "chenhun.js"
 ];
